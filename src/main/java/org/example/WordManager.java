@@ -11,13 +11,11 @@ public class WordManager implements iCRUD{
     }
 
     @Override
-    public int addData(){
-        int id;
+    public void addData(){
         String word;
         String meaning;
         int level;
         String created_date;
-        boolean memorized;
         System.out.print("Enter a word >> ");
         word = sc.nextLine();
 
@@ -31,22 +29,21 @@ public class WordManager implements iCRUD{
         created_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
         wordCRUD.addData(new Word(word,meaning,level,created_date,false));
-        return 0;
     }
 
 
     @Override
-    public int updateItem() {
-        return 0;
+    public void updateItem() {
+        System.out.print("Enter a word to update >> ");
+        String word = sc.nextLine();
+        wordCRUD.updateData();
     }
 
     @Override
-    public int deleteItem() {
-        return 0;
+    public void deleteItem() {
     }
 
     @Override
-    public int printItem() {
-        return 0;
+    public void printItem() {
     }
 }

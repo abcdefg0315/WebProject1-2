@@ -21,4 +21,8 @@ public class WordCRUD {
             throw new RuntimeException("데이터 추가 중 오류 발생: " + e.getMessage(), e);
         }
     }
+
+    public void updateData(Word one){
+
+    }
 }
