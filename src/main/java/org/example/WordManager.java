@@ -62,4 +62,8 @@ public class WordManager implements iCRUD{
     public void printItemByLevel(){
         wordCRUD.printItemByLevel();
     }
+
+    public void printItemByMemorized(){
+        wordCRUD.printItemByMemorized();
+    }
 }

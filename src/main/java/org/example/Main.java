@@ -26,7 +26,7 @@ public class Main {
                     break;
 
                 case 3:
-                    manager.printItem();
+                    manager.printItemByMemorized();
                     break;
 
                 case 4:
