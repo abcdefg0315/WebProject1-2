@@ -7,11 +7,13 @@ import java.sql.SQLException;
 public class DBUtil {
     static Connection conn = null;
     public static Connection getConn() {
-        try{
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:hello.db");
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
+        if (conn == null) {
+            try {
+                Class.forName("org.sqlite.JDBC");
+                conn = DriverManager.getConnection("jdbc:sqlite:hello.db");
+            } catch (ClassNotFoundException | SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
         return conn;
     }
@@ -20,6 +22,7 @@ public class DBUtil {
         if(conn != null) {
             try {
                 conn.close();
+                conn = null;
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
