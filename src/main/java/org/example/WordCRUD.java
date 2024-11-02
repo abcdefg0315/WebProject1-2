@@ -1,9 +1,7 @@
 package org.example;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.ResultSet;
 
 public class WordCRUD {
 
@@ -14,20 +12,13 @@ public class WordCRUD {
     }
 
     public void addData(Word one){
-        String sql = "insert into t_user (word, meaning) values ('"+ one.getWord() + "','" + one.getMeaning() + "')";
 
-        Statement stat1 = null;
-        try {
-            stat1 = conn.createStatement();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        try {
+        try (Statement stat1 = conn.createStatement()) {
+            String sql = "insert into t_user (word, meaning,level) values ('"+ one.getWord() + "', '" + one.getMeaning() + "', " +one.getLevel() + ")";
             stat1.execute(sql);
+            System.out.println("데이터가 추가됨!");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("데이터 추가 중 오류 발생: " + e.getMessage(), e);
         }
-
-        System.out.println("데이터가추가됨!");
     }
 }

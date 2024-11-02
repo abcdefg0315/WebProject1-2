@@ -11,12 +11,16 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         WordManager manager = new WordManager();
-        Connection con = null;
         boolean quit = false;
         do{
             manager.printMenu();
             int menu = sc.nextInt();
             switch (menu){
+                case 0:
+                    quit = true;
+                    System.out.println("Bye!");
+                    break;
+
                 case 4:
                     manager.addData();
                     break;
@@ -40,7 +44,8 @@ public class Main {
 
             String sql = "insert into t_user (word, meaning) values ('apple', '사과')";
             Statement stat1 = con.createStatement();
-            stat1.execute(sql);System.out.println("데이터가추가됨!");
+            stat1.execute(sql);
+            System.out.println("데이터가추가됨!");
             Statement stat2 = con.createStatement();  // SQL 수행
             ResultSet rs = stat2.executeQuery("SELECT ID, word, meaning FROM t_user");
             while (rs.next()) {
