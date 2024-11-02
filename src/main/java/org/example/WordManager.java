@@ -16,6 +16,7 @@ public class WordManager implements iCRUD{
         String meaning;
         int level;
         String created_date;
+        boolean memorized = false;
         System.out.print("Enter a word >> ");
         word = sc.nextLine();
 
@@ -28,7 +29,7 @@ public class WordManager implements iCRUD{
 
         created_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
-        wordCRUD.addData(new Word(word,meaning,level,created_date,false));
+        wordCRUD.addData(new Word(word,meaning,level,created_date,memorized));
     }
 
 

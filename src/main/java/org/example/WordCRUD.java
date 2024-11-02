@@ -15,7 +15,9 @@ public class WordCRUD {
     }
 
     public void addData(Word one) {
-        String sql = "insert into t_user (word, meaning,level) values ('" + one.getWord() + "', '" + one.getMeaning() + "', " + one.getLevel() + ")";
+        String sql = "INSERT INTO t_user (word, meaning, level, created_date, memorized) VALUES ('"
+                + one.getWord() + "', '" + one.getMeaning() + "', " + one.getLevel()
+                + ", '" + one.getCreated_date() + "', '" + one.isMemorized() + "')";
 
         try (Statement stat1 = conn.createStatement()) {
             stat1.execute(sql);
@@ -42,13 +44,27 @@ public class WordCRUD {
                 int newLevel = sc.nextInt();
                 sc.nextLine();
 
+                System.out.print("Enter a memorized (t or f) >> ");
+                boolean memorized;
+                String ft = sc.nextLine();
+
+                if (ft.equals("f")) {
+                    memorized = false;
+                } else if (ft.equals("t")) {
+                    memorized = true;
+                } else {
+                    System.out.println("Invalid input. Please enter 't' for true or 'f' for false.");
+                    return;
+                }
+
                 // 업데이트 쿼리 실행
-                String updateSql = "UPDATE t_user SET word = ?, meaning = ?, level = ? WHERE word = ?";
+                String updateSql = "UPDATE t_user SET word = ?, meaning = ?, level = ?,memorized = ? WHERE word = ?";
                 try (PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
                     updateStmt.setString(1, newWord);
                     updateStmt.setString(2, newMeaning);
                     updateStmt.setInt(3, newLevel);
-                    updateStmt.setString(4, word);
+                    updateStmt.setBoolean(4, memorized);
+                    updateStmt.setString(5, word);
 
                     int rowsAffected = updateStmt.executeUpdate();
                     if (rowsAffected > 0) {
@@ -76,9 +92,10 @@ public class WordCRUD {
                 String meaning = rs.getString("meaning");
                 int level = rs.getInt("level");
                 String createdDate = rs.getString("created_date");
+                boolean memorized = rs.getBoolean("memorized");
 
-                System.out.printf("ID: %d | Word: %s | Meaning: %s | Level: %d | Created Date: %s\n",
-                        id, word, meaning, level, createdDate);
+                System.out.printf("ID: %d | Word: %s | Meaning: %s | Level: %d | Memorized: %b | Created Date: %s\n",
+                        id, word, meaning, level, memorized, createdDate);
             }
 
             rs.close();
