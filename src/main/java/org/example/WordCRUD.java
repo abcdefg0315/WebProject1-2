@@ -119,4 +119,34 @@ public class WordCRUD {
             throw new RuntimeException("Error deleting the word: " + e.getMessage(), e);
         }
     }
+    public void searchData(String searchTerm){
+        String sql = "SELECT * FROM t_user WHERE word LIKE ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, "%" + searchTerm + "%");
+            ResultSet rs = stmt.executeQuery();
+
+            System.out.println("=== 검색 결과 ===");
+            boolean found = false;
+            while (rs.next()) {
+                found = true;
+                int id = rs.getInt("id");
+                String word = rs.getString("word");
+                String meaning = rs.getString("meaning");
+                int level = rs.getInt("level");
+                String createdDate = rs.getString("created_date");
+                boolean memorized = rs.getBoolean("memorized");
+
+                System.out.printf("ID: %d | Word: %s | Meaning: %s | Level: %d | Memorized: %b | Created Date: %s\n",
+                        id, word, meaning, level, memorized, createdDate);
+            }
+
+            if (!found) {
+                System.out.println("No results found for the given word.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error searching for the word: " + e.getMessage(), e);
+        }
+    }
 }

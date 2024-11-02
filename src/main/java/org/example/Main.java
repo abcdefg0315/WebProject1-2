@@ -26,6 +26,10 @@ public class Main {
                     manager.printItem();
                     break;
 
+                case 3:
+                    manager.searchData();
+                    break;
+
                 case 4:
                     manager.addData();
                     break;

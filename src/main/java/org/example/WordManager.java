@@ -52,4 +52,10 @@ public class WordManager implements iCRUD{
     public void printItem() {
         wordCRUD.printData();
     }
+
+    public void searchData(){
+        System.out.print("Enter a word to search >> ");
+        String searchWord = sc.nextLine();
+        wordCRUD.searchData(searchWord);
+    }
 }
