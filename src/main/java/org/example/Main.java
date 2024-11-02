@@ -21,6 +21,10 @@ public class Main {
                     System.out.println("Bye!");
                     break;
 
+                case 1:
+                    manager.printItem();
+                    break;
+
                 case 4:
                     manager.addData();
                     break;

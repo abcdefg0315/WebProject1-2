@@ -64,4 +64,26 @@ public class WordCRUD {
             throw new RuntimeException("Error updating the word: " + e.getMessage(), e);
         }
     }
+    public void printData(){
+        String sql = "SELECT * FROM t_user";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+
+            System.out.println("=== 전체 단어 목록 ===");
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String word = rs.getString("word");
+                String meaning = rs.getString("meaning");
+                int level = rs.getInt("level");
+                String createdDate = rs.getString("created_date");
+
+                System.out.printf("ID: %d | Word: %s | Meaning: %s | Level: %d | Created Date: %s\n",
+                        id, word, meaning, level, createdDate);
+            }
+
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving words: " + e.getMessage(), e);
+        }
+    }
 }

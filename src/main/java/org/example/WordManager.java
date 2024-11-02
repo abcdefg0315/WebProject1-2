@@ -45,5 +45,6 @@ public class WordManager implements iCRUD{
 
     @Override
     public void printItem() {
+        wordCRUD.printData();
     }
 }
