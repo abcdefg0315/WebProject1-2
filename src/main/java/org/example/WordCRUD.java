@@ -149,4 +149,28 @@ public class WordCRUD {
             throw new RuntimeException("Error searching for the word: " + e.getMessage(), e);
         }
     }
+    public void printItemByLevel(){
+        String sql = "SELECT * FROM t_user ORDER BY level";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+
+            int currentLevel = -1; // 현재 레벨 추적
+            while (rs.next()) {
+                int level = rs.getInt("level");
+
+                int id = rs.getInt("id");
+                String word = rs.getString("word");
+                String meaning = rs.getString("meaning");
+                String createdDate = rs.getString("created_date");
+                boolean memorized = rs.getBoolean("memorized");
+
+                System.out.printf("ID: %d | Word: %s | Meaning: %s | Memorized: %b | Created Date: %s\n",
+                        id, word, meaning, memorized, createdDate);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error listing words by level: " + e.getMessage(), e);
+        }
+    }
 }

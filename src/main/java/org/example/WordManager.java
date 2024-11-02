@@ -7,7 +7,7 @@ public class WordManager implements iCRUD{
     Scanner sc = new Scanner(System.in);
     WordCRUD wordCRUD = new WordCRUD();
     public void printMenu(){
-        System.out.print("[Menu] 1. List  2. List(level)  3. Search  4.Add  5.Modify  6.Delete  7.Save file 0.Exit >> ");
+        System.out.print("[Menu] 1. List  2. List(level) 3.List(memorized)  4. Search  5.Add  6.Modify  7.Delete  8.Save file 0.Exit >> ");
     }
 
     @Override
@@ -57,5 +57,9 @@ public class WordManager implements iCRUD{
         System.out.print("Enter a word to search >> ");
         String searchWord = sc.nextLine();
         wordCRUD.searchData(searchWord);
+    }
+
+    public void printItemByLevel(){
+        wordCRUD.printItemByLevel();
     }
 }

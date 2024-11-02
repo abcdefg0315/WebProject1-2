@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b02bf2cc-b8b4-449c-ae43-467fdcb41063" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WordCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WordCRUD.java" afterDir="false" />
-    </list>
+    <list default="true" id="b02bf2cc-b8b4-449c-ae43-467fdcb41063" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +70,7 @@
       <workItem from="1730168013074" duration="14000" />
       <workItem from="1730337029215" duration="3776000" />
       <workItem from="1730423064284" duration="4042000" />
-      <workItem from="1730539137965" duration="6022000" />
+      <workItem from="1730539137965" duration="6337000" />
     </task>
     <servers />
   </component>

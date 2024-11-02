@@ -1,10 +1,5 @@
 package org.example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class Main {
@@ -26,19 +21,31 @@ public class Main {
                     manager.printItem();
                     break;
 
+                case 2:
+                    manager.printItemByLevel();
+                    break;
+
                 case 3:
-                    manager.searchData();
+                    manager.printItem();
                     break;
 
                 case 4:
-                    manager.addData();
+                    manager.searchData();
                     break;
 
                 case 5:
-                    manager.updateItem();
+                    manager.addData();
                     break;
 
                 case 6:
+                    manager.updateItem();
+                    break;
+
+                case 7:
+                    manager.deleteItem();
+                    break;
+
+                case 8:
                     manager.deleteItem();
                     break;
 
