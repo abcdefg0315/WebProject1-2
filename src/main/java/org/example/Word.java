@@ -1,4 +1,5 @@
 package org.example;
+import java.time.LocalDateTime;
 
 public class Word {
     private int id;
@@ -14,8 +15,7 @@ public class Word {
         this.level = level;
     }
 
-    public Word(int id, String word, String meaning, int level, String created_date, boolean memorized) {
-        this.id = id;
+    public Word(String word, String meaning, int level, String created_date, boolean memorized) {
         this.word = word;
         this.meaning = meaning;
         this.level = level;
