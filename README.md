@@ -6,4 +6,4 @@ addItem <img src="img_4.png" width="500"><br><br>
 UpdateItem <img src="img_5.png" width="500"><br><br>
 deleteItem <img src="img_6.png" width="500"><br><br>
 Save <img src="img_7.png" width="500"><br><br>
-Exit <img src="img_7.png" width="500"><br><br>
+Exit <img src="img_8.png" width="500"><br><br>
