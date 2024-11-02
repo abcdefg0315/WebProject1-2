@@ -36,7 +36,7 @@ public class WordManager implements iCRUD{
     public void updateItem() {
         System.out.print("Enter a word to update >> ");
         String word = sc.nextLine();
-        wordCRUD.updateData();
+        wordCRUD.updateData(word);
     }
 
     @Override
