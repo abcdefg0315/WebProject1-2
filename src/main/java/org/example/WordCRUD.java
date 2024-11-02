@@ -8,12 +8,13 @@ import java.sql.ResultSet;
 public class WordCRUD {
 
     Connection conn = null;
+
     WordCRUD(){
         conn = DBUtil.getConn();
     }
+
     public void addData(Word one){
-        String sql = "insert into word (word, meaning) values ('"
-                + one.getWord() + "','" + one.getMeaning() + "') ";
+        String sql = "insert into t_user (word, meaning) values ('"+ one.getWord() + "','" + one.getMeaning() + "')";
 
         Statement stat1 = null;
         try {
@@ -26,7 +27,7 @@ public class WordCRUD {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
         System.out.println("데이터가추가됨!");
-        //
     }
 }

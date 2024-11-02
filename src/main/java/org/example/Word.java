@@ -8,6 +8,12 @@ public class Word {
     private String created_date;
     private boolean memorized;
 
+    public Word(String word, String meaning, int level) {
+        this.word = word;
+        this.meaning = meaning;
+        this.level = level;
+    }
+
     public Word(int id, String word, String meaning, int level, String created_date, boolean memorized) {
         this.id = id;
         this.word = word;
@@ -17,11 +23,6 @@ public class Word {
         this.memorized = memorized;
     }
 
-    public Word(String word, String meaning, int level) {
-        this.word = word;
-        this.meaning = meaning;
-        this.level = level;
-    }
 
     public int getId() {
         return id;
