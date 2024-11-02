@@ -8,6 +8,10 @@ import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+
 
 public class WordCRUD {
 
@@ -199,8 +203,12 @@ public class WordCRUD {
             throw new RuntimeException("Error listing words by level: " + e.getMessage(), e);
         }
     }
-    public void saveData(String filePath) {
+    public void saveData(String fileFormat) {
         String sql = "SELECT * FROM t_user";
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmm");
+        String timestamp = LocalDateTime.now().format(formatter);
+        String filePath = "data_" + timestamp + "." + fileFormat;
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
              PreparedStatement stmt = conn.prepareStatement(sql);
@@ -224,6 +232,7 @@ public class WordCRUD {
                         id, word, meaning, level, memorized, createdDate));
                 writer.newLine();
             }
+
             System.out.println("Data has been saved to " + filePath);
 
         } catch (SQLException e) {
