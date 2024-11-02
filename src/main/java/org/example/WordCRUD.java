@@ -104,6 +104,19 @@ public class WordCRUD {
         }
     }
     public void deleteData(String word){
+        String sql = "DELETE FROM t_user WHERE word = ?";
 
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, word);
+
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("The word has been successfully deleted.");
+            } else {
+                System.out.println("No word found with the provided name.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting the word: " + e.getMessage(), e);
+        }
     }
 }

@@ -15,6 +15,7 @@ public class Main {
         do{
             manager.printMenu();
             int menu = sc.nextInt();
+            sc.nextLine();
             switch (menu){
                 case 0:
                     quit = true;
@@ -31,6 +32,10 @@ public class Main {
 
                 case 5:
                     manager.updateItem();
+                    break;
+
+                case 6:
+                    manager.deleteItem();
                     break;
 
                 default:
