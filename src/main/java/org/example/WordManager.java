@@ -42,6 +42,10 @@ public class WordManager implements iCRUD{
 
     @Override
     public void deleteItem() {
+        System.out.print("Enter the word to delete >> ");
+        String word = sc.nextLine();
+        sc.nextLine(); // 입력 버퍼 비우기
+        wordCRUD.deleteData(word);
     }
 
     @Override

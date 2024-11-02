@@ -103,4 +103,7 @@ public class WordCRUD {
             throw new RuntimeException("Error retrieving words: " + e.getMessage(), e);
         }
     }
+    public void deleteData(String word){
+
+    }
 }
