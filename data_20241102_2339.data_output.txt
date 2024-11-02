@@ -1,0 +1,4 @@
+ID	Word	Meaning	Level	Memorized	Created Date
+1	malon	멜론	1	false	2024-11-02 22:13:25
+3	peach	복숭아	1	true	2024-11-02 22:18:40
+4	watermalon	수박	2	false	2024-11-02 23:37:09
