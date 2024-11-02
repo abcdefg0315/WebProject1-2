@@ -5,6 +5,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class WordCRUD {
 
@@ -194,6 +197,39 @@ public class WordCRUD {
 
         } catch (SQLException e) {
             throw new RuntimeException("Error listing words by level: " + e.getMessage(), e);
+        }
+    }
+    public void saveData(String filePath) {
+        String sql = "SELECT * FROM t_user";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            // 파일 헤더 작성
+            writer.write("ID\tWord\tMeaning\tLevel\tMemorized\tCreated Date");
+            writer.newLine();
+
+            // 데이터베이스 데이터 작성
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String word = rs.getString("word");
+                String meaning = rs.getString("meaning");
+                int level = rs.getInt("level");
+                boolean memorized = rs.getBoolean("memorized");
+                String createdDate = rs.getString("created_date");
+
+                // 한 줄씩 파일에 작성
+                writer.write(String.format("%d\t%s\t%s\t%d\t%b\t%s",
+                        id, word, meaning, level, memorized, createdDate));
+                writer.newLine();
+            }
+            System.out.println("Data has been saved to " + filePath);
+
+        } catch (SQLException e) {
+            System.out.println("Error retrieving data from the database: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error writing data to file: " + e.getMessage());
         }
     }
 }

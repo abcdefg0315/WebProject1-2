@@ -46,7 +46,7 @@ public class Main {
                     break;
 
                 case 8:
-                    manager.deleteItem();
+                    manager.saveData();
                     break;
 
                 default:

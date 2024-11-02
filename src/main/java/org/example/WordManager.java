@@ -66,4 +66,8 @@ public class WordManager implements iCRUD{
     public void printItemByMemorized(){
         wordCRUD.printItemByMemorized();
     }
+
+    public void saveData(){
+        wordCRUD.saveData("data_output.txt");
+    }
 }
